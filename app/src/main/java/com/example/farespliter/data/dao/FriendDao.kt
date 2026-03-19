@@ -13,7 +13,7 @@ interface FriendDao{
     suspend fun insert(friend: Friend)
 
     @Query("DELETE FROM friends WHERE id = :friendId")
-    suspend fun deleteById(friendId: Int)
+    suspend fun deleteById(friendId: Long)
 
     @Query("SELECT * FROM friends ORDER BY name ASC")
     fun getAllFriends() : LiveData<List<Friend>>

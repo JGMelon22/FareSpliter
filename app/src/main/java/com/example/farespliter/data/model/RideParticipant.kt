@@ -24,6 +24,6 @@ import androidx.room.Index
     indices = [Index("friendId")]
 )
 data class RideParticipant(
-    val rideId: Int,
-    val friendId: Int
+    val rideId: Long,
+    val friendId: Long
 )

@@ -31,7 +31,7 @@ abstract class AppDatabase : RoomDatabase() {
                     context.applicationContext,
                     AppDatabase::class.java,
                     "faresplitter.db"
-                ).build().also { INSTANCE = 1 }
+                ).build().also { INSTANCE = it }
             }
         }
     }

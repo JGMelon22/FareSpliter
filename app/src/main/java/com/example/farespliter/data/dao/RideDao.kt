@@ -11,10 +11,10 @@ import com.example.farespliter.data.model.Ride
 interface RideDao {
 
     @Insert(onConflict = OnConflictStrategy.IGNORE)
-    suspend fun insert(ride: Ride): Int // returns the generated id
+    suspend fun insert(ride: Ride): Long // returns the generated id
 
     @Query("DELETE FROM rides WHERE id = :rideId")
-    suspend fun deleteById(rideId: Int)
+    suspend fun deleteById(rideId: Long)
 
     @Query("SELECT * FROM rides ORDER BY date DESC")
     fun getAllRides() : LiveData<List<Ride>>
