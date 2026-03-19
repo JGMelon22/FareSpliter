@@ -7,5 +7,7 @@ import androidx.room.PrimaryKey
 data class Ride(
     @PrimaryKey(autoGenerate = true)
     val id: Int = 0,
-    val name: String
+    val appName: String,
+    val totalFare: Double,
+    val date: Long // Unix timestamp in ms (better Android Support with room)
 )

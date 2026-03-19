@@ -7,7 +7,5 @@ import androidx.room.PrimaryKey
 data class Friend(
     @PrimaryKey(autoGenerate = true)
     val id: Int = 0,
-    val appName: String,
-    val totalFare: Double,
-    val date: Long // Unix timestamp in ms (better Android Support with room)
+    val name: String
 )
