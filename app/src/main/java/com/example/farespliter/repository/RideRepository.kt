@@ -11,7 +11,7 @@ class RideRepository(private val db: AppDatabase) {
 
     // Friends
     fun getAllFriends(): LiveData<List<Friend>> =
-        db.friendDao().getAllFriends();
+        db.friendDao().getAllFriends()
 
     suspend fun addFriend(name: String) {
         db.friendDao().insert(Friend(name = name))

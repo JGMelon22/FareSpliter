@@ -1,0 +1,56 @@
+package com.example.farespliter.ui.rides
+
+import android.app.Application
+import android.telecom.Call
+import androidx.lifecycle.AndroidViewModel
+import androidx.lifecycle.LiveData
+import androidx.lifecycle.viewModelScope
+import com.example.farespliter.data.AppDatabase
+import com.example.farespliter.data.model.Friend
+import com.example.farespliter.data.model.Ride
+import com.example.farespliter.data.model.RideParticipant
+import com.example.farespliter.repository.RideRepository
+import kotlinx.coroutines.launch
+import javax.security.auth.callback.Callback
+
+class RidesViewModel(application: Application) : AndroidViewModel(application) {
+
+    private val repository: RideRepository = RideRepository(AppDatabase.getInstance(application))
+
+    val rides: LiveData<List<Ride>> = repository.getAllRides()
+
+    fun addRide(
+        appName: String,
+        totalFare: Double,
+        date: Long,
+        participantIds: List<Long>
+    ) {
+        if (appName.isBlank() || totalFare <= 0 || participantIds.isEmpty()) return
+        viewModelScope.launch {
+            repository.addRide(
+                ride = Ride(
+                    appName = appName.trim(),
+                    totalFare = totalFare,
+                    date = date
+                ),
+                participantIds = participantIds
+            )
+        }
+    }
+
+    fun deleteRide(rideId: Long) {
+        viewModelScope.launch {
+            repository.deleteRide(rideId)
+        }
+    }
+
+    fun getParticipantsForRide(
+        rideId: Long,
+        callback: (List<Friend>) -> Unit
+    ) {
+        viewModelScope.launch {
+            val participants = repository.getParticipantsForRide(rideId)
+            callback(participants)
+        }
+    }
+}
