@@ -1,3 +1,7 @@
 <resources>
     <string name="app_name">FareSpliter</string>
+    <string name="hint_friend_name">Friend name</string>
+    <string name="btn_add">Add</string>
+    <string name="btn_delete">Delete</string>
+    <string name="title_friends">Friends</string>
 </resources>
