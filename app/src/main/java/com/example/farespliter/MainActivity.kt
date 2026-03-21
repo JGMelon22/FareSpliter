@@ -1,11 +1,13 @@
 package com.example.farespliter
 
+import android.content.Intent
 import android.os.Bundle
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import com.example.farespliter.ui.rides.AddRideActivity
 import com.example.farespliter.ui.rides.RidesAdapter
 import com.example.farespliter.ui.rides.RidesViewModel
 import com.google.android.material.appbar.MaterialToolbar
@@ -46,8 +48,7 @@ class MainActivity : AppCompatActivity() {
     private fun setupFab() {
         val fab = findViewById<FloatingActionButton>(R.id.fabAddRide)
         fab.setOnClickListener {
-            // TODO - Develop RideActivity later
-            // startActivity(Intent(this, AddRideActivity::class.javaClass))
+            startActivity(Intent(this, AddRideActivity::class.java))
         }
     }
 

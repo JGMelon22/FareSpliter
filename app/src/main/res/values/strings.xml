@@ -5,4 +5,13 @@
     <string name="btn_delete">Delete</string>
     <string name="title_friends">Friends</string>
     <string name="fab_add_ride">Add ride</string>
+    <string name="hint_app_name">App name (Uber, 99 Taxi\u2026)</string>
+    <string name="hint_fare">Total fare</string>
+    <string name="hint_date">Date</string>
+    <string name="label_participants">Participants</string>
+    <string name="label_each_pays">Each person pays</string>
+    <string name="btn_save_ride">Save ride</string>
+    <string name="title_add_ride">Add ride</string>
+    <string name="error_app_name">Please enter the app name</string>
+    <string name="error_fare">Please enter a valid fare</string>
 </resources>
