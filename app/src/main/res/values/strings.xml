@@ -19,4 +19,11 @@
     <string name="label_owed_to_you">Amount owed to you</string>
     <string name="label_ride_count">%d rides</string>
     <string name="btn_export">Share / Save summary</string>
+    <string name="dialog_export_title">Export summary</string>
+    <string name="dialog_export_message">How would you like to export?</string>
+    <string name="btn_share">Share (WhatsApp…)</string>
+    <string name="btn_save_file">Save to file</string>
+    <string name="btn_cancel">Cancel</string>
+    <string name="msg_file_saved">File saved to Documents folder</string>
+    <string name="msg_file_error">Could not save file</string>
 </resources>

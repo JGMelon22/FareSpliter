@@ -1,13 +1,15 @@
 package com.example.farespliter.ui.summary
 
 import android.os.Bundle
-import android.os.PersistableBundle
 import android.widget.TextView
+import android.widget.Toast
+import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.farespliter.R
+import com.example.farespliter.util.ExportHelper
 import com.google.android.material.appbar.MaterialToolbar
 import com.google.android.material.button.MaterialButton
 import java.util.Locale
@@ -16,6 +18,8 @@ class SummaryActivity : AppCompatActivity() {
 
     private lateinit var viewModel: SummaryViewModel
     private lateinit var adapter: SummaryAdapter
+    private var currentItems: List<SummaryItem> = emptyList()
+    private var currentTotal: Double = 0.0
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -48,8 +52,33 @@ class SummaryActivity : AppCompatActivity() {
     private fun setupExportButton() {
         val btnExport = findViewById<MaterialButton>(R.id.btnExport)
         btnExport.setOnClickListener {
-            // TODO - Will be configured latter
+            //  showExportDialog()
         }
+    }
+
+    private fun showExportDialog() {
+        val montLabel = getString(R.string.title_summary)
+        val text = ExportHelper.buildSummaryText(
+            items = currentItems,
+            totalSpent = currentTotal,
+            monthLabel = montLabel
+        )
+
+        AlertDialog.Builder(this)
+            .setTitle(getString(R.string.dialog_export_title))
+            .setMessage(getString(R.string.dialog_export_message))
+            .setPositiveButton(getString(R.string.btn_share)) { _, _ ->
+                ExportHelper.shareAsText(this, text, montLabel)
+            }
+            .setNeutralButton(getString(R.string.btn_save_file)) { _, _ ->
+                val saved = ExportHelper.saveToFile(this, text, montLabel)
+                val msg = if (saved)
+                    getString(R.string.msg_file_saved)
+                else
+                    getString((R.string.msg_file_error))
+                Toast.makeText(this, msg, Toast.LENGTH_SHORT)
+                    .show()
+            }
     }
 
     private fun observeSummary() {
@@ -63,6 +92,10 @@ class SummaryActivity : AppCompatActivity() {
             }.sortedByDescending { it.amountOwed }
 
             val total = amountMap.values.sum()
+
+            currentItems = items
+            currentTotal = total
+
             findViewById<TextView>(R.id.tvTotalSpent).text =
                 String.format(Locale.getDefault(), "R$ %.2f", total)
 

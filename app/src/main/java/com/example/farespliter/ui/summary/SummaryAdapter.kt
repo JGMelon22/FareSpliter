@@ -24,7 +24,7 @@ class SummaryAdapter :
         holder.bind(getItem(position))
     }
 
-    inner class SummaryViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
+    class SummaryViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
         private val tvInitials = itemView.findViewById<TextView>(R.id.tvInitials)
         private val tvName = itemView.findViewById<TextView>(R.id.tvFriendName)
         private val tvRideCount = itemView.findViewById<TextView>(R.id.tvRideCount)
