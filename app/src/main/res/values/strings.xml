@@ -14,4 +14,9 @@
     <string name="title_add_ride">Add ride</string>
     <string name="error_app_name">Please enter the app name</string>
     <string name="error_fare">Please enter a valid fare</string>
+    <string name="title_summary">Monthly summary</string>
+    <string name="label_total_spent">Total spent this month</string>
+    <string name="label_owed_to_you">Amount owed to you</string>
+    <string name="label_ride_count">%d rides</string>
+    <string name="btn_export">Share / Save summary</string>
 </resources>
