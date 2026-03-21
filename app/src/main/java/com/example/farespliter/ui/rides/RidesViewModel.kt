@@ -1,17 +1,14 @@
 package com.example.farespliter.ui.rides
 
 import android.app.Application
-import android.telecom.Call
 import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.viewModelScope
 import com.example.farespliter.data.AppDatabase
 import com.example.farespliter.data.model.Friend
 import com.example.farespliter.data.model.Ride
-import com.example.farespliter.data.model.RideParticipant
 import com.example.farespliter.repository.RideRepository
 import kotlinx.coroutines.launch
-import javax.security.auth.callback.Callback
 
 class RidesViewModel(application: Application) : AndroidViewModel(application) {
 
