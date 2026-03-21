@@ -26,4 +26,6 @@
     <string name="btn_cancel">Cancel</string>
     <string name="msg_file_saved">File saved to Documents folder</string>
     <string name="msg_file_error">Could not save file</string>
+    <string name="menu_friends">Friends</string>
+    <string name="menu_summary">Summary</string>
 </resources>

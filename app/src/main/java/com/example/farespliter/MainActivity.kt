@@ -2,14 +2,18 @@ package com.example.farespliter
 
 import android.content.Intent
 import android.os.Bundle
+import android.view.Menu
+import android.view.MenuItem
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import com.example.farespliter.ui.friends.FriendsActivity
 import com.example.farespliter.ui.rides.AddRideActivity
 import com.example.farespliter.ui.rides.RidesAdapter
 import com.example.farespliter.ui.rides.RidesViewModel
+import com.example.farespliter.ui.summary.SummaryActivity
 import com.google.android.material.appbar.MaterialToolbar
 import com.google.android.material.floatingactionbutton.FloatingActionButton
 
@@ -29,6 +33,27 @@ class MainActivity : AppCompatActivity() {
         setupRecyclerView()
         setupFab()
         observeRides()
+    }
+
+    override fun onCreateOptionsMenu(menu: Menu): Boolean {
+        menuInflater.inflate(R.menu.menu_main, menu)
+        return true
+    }
+
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        return when (item.itemId) {
+            R.id.action_friends -> {
+                startActivity(Intent(this, FriendsActivity::class.java))
+                true
+            }
+
+            R.id.action_summary -> {
+                startActivity(Intent(this, SummaryActivity::class.java))
+                true
+            }
+
+            else -> super.onOptionsItemSelected(item)
+        }
     }
 
     private fun setupToolbar() {
