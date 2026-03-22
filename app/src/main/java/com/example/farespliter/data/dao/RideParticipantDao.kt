@@ -29,8 +29,9 @@ interface RideParticipantDao {
     @Query(
         """
         SELECT rides.id, rides.appName, rides.totalFare, rides.date,
-               COUNT(ride_participants.friendId) AS participantCount
-        FROM rides 
+               (SELECT COUNT(*) FROM ride_participants rp2 
+                WHERE rp2.rideId = rides.id) AS participantCount
+        FROM rides
         INNER JOIN ride_participants ON rides.id = ride_participants.rideId
         WHERE ride_participants.friendId = :friendId
         GROUP BY rides.id

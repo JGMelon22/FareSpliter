@@ -16,6 +16,17 @@
             android:theme="@style/ThemeOverlay.MaterialComponents.Dark.ActionBar"
             app:title="@string/app_name" />
 
+        <TextView
+            android:id="@+id/tvMonthHeader"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingHorizontal="16dp"
+            android:paddingVertical="12dp"
+            android:textSize="13sp"
+            android:textStyle="bold"
+            android:letterSpacing="0.1"
+            android:textColor="?attr/colorOnSurfaceVariant" />
+
     </com.google.android.material.appbar.AppBarLayout>
 
     <androidx.recyclerview.widget.RecyclerView
