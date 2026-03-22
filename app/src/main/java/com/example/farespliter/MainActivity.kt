@@ -4,6 +4,8 @@ import android.content.Intent
 import android.os.Bundle
 import android.view.Menu
 import android.view.MenuItem
+import android.view.View
+import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -78,6 +80,9 @@ class MainActivity : AppCompatActivity() {
     private fun observeRides() {
         viewModel.rides.observe(this) { rides ->
             adapter.submitList(rides)
+
+            val tvEmpty = findViewById<TextView>(R.id.tvEmptyState)
+            tvEmpty.visibility = if (rides.isEmpty()) View.VISIBLE else View.GONE
         }
     }
 }

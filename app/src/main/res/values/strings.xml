@@ -28,4 +28,5 @@
     <string name="msg_file_error">Could not save file</string>
     <string name="menu_friends">Friends</string>
     <string name="menu_summary">Summary</string>
+    <string name="empty_rides">No rides yet.\nTap + to add your first ride!</string>
 </resources>
