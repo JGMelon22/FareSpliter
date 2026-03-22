@@ -1,45 +1,45 @@
 <resources>
     <string name="app_name">FareSplitter</string>
-    <string name="hint_friend_name">Friend name</string>
-    <string name="btn_add">Add</string>
-    <string name="btn_delete">Delete</string>
-    <string name="title_friends">Friends</string>
-    <string name="fab_add_ride">Add ride</string>
-    <string name="hint_app_name">App name (Uber, 99 Taxi…)</string>
+    <string name="hint_friend_name">Nome do amigo</string>
+    <string name="btn_add">Adicionar</string>
+    <string name="btn_delete">Excluir</string>
+    <string name="title_friends">Amigos</string>
+    <string name="fab_add_ride">Adicionar corrida</string>
+    <string name="hint_app_name">Aplicativo (Uber, 99 Taxi…)</string>
 
     <string-array name="ride_apps">
         <item>Uber</item>
         <item>99 Taxi</item>
     </string-array>
 
-    <string name="hint_fare">Total fare</string>
-    <string name="hint_date">Date</string>
-    <string name="label_participants">Participants</string>
+    <string name="hint_fare">Valor total</string>
+    <string name="hint_date">Data</string>
+    <string name="label_participants">Participantes</string>
     <plurals name="participant_count">
-        <item quantity="one">%d participant</item>
-        <item quantity="other">%d participants</item>
+        <item quantity="one">%d participante</item>
+        <item quantity="other">%d participantes</item>
     </plurals>
-    <string name="label_each_pays">Each person pays</string>
-    <string name="btn_save_ride">Save ride</string>
-    <string name="title_add_ride">Add ride</string>
-    <string name="error_app_name">Please enter the app name</string>
-    <string name="error_fare">Please enter a valid fare</string>
-    <string name="title_summary">Monthly summary</string>
-    <string name="label_total_spent">Total spent this month</string>
-    <string name="label_owed_to_you">Amount owed to you</string>
+    <string name="label_each_pays">Cada um paga</string>
+    <string name="btn_save_ride">Salvar corrida</string>
+    <string name="title_add_ride">Adicionar corrida</string>
+    <string name="error_app_name">Informe o nome do aplicativo</string>
+    <string name="error_fare">Informe um valor válido</string>
+    <string name="title_summary">Resumo mensal</string>
+    <string name="label_total_spent">Total gasto no mês</string>
+    <string name="label_owed_to_you">Valor a receber</string>
     <plurals name="ride_count">
-        <item quantity="one">%d ride</item>
-        <item quantity="other">%d rides</item>
+        <item quantity="one">%d corrida</item>
+        <item quantity="other">%d corridas</item>
     </plurals>
-    <string name="btn_export">Share / Save summary</string>
-    <string name="dialog_export_title">Export summary</string>
-    <string name="dialog_export_message">How would you like to export?</string>
-    <string name="btn_share">Share (WhatsApp…)</string>
-    <string name="btn_save_file">Save to file</string>
-    <string name="btn_cancel">Cancel</string>
-    <string name="msg_file_saved">File saved to Documents folder</string>
-    <string name="msg_file_error">Could not save file</string>
-    <string name="menu_friends">Friends</string>
-    <string name="menu_summary">Summary</string>
-    <string name="empty_rides">No rides yet.\nTap + to add your first ride!</string>
+    <string name="btn_export">Compartilhar / Salvar resumo</string>
+    <string name="dialog_export_title">Exportar resumo</string>
+    <string name="dialog_export_message">Como deseja exportar?</string>
+    <string name="btn_share">Compartilhar (WhatsApp…)</string>
+    <string name="btn_save_file">Salvar arquivo</string>
+    <string name="btn_cancel">Cancelar</string>
+    <string name="msg_file_saved">Arquivo salvo na pasta Documentos</string>
+    <string name="msg_file_error">Não foi possível salvar o arquivo</string>
+    <string name="menu_friends">Amigos</string>
+    <string name="menu_summary">Resumo</string>
+    <string name="empty_rides">Nenhuma corrida ainda.\nToque em + para adicionar!</string>
 </resources>
