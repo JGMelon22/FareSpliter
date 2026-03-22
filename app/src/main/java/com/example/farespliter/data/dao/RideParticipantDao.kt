@@ -16,29 +16,33 @@ interface RideParticipantDao {
     @Query("DELETE FROM ride_participants WHERE rideId = :rideId")
     suspend fun deleteByRide(rideId: Long)
 
-    @Query("""
+    @Query(
+        """
         SELECT friends.id, friends.name
         FROM friends 
         INNER JOIN ride_participants ON friends.id = ride_participants.friendId
         WHERE ride_participants.rideId = :rideId
-    """)
-    suspend fun getFriendsForRide(rideId: Long) : List<Friend>
+    """
+    )
+    suspend fun getFriendsForRide(rideId: Long): List<Friend>
 
-    @Query("""
+    @Query(
+        """
         SELECT rides.id, rides.appName, rides.totalFare, rides.date,
                COUNT(ride_participants.friendId) AS participantCount
         FROM rides 
         INNER JOIN ride_participants ON rides.id = ride_participants.rideId
         WHERE ride_participants.friendId = :friendId
         GROUP BY rides.id
-    """)
-    suspend fun getRidesForFriend(friendId: Long) : List<RideWithCount>
+    """
+    )
+    suspend fun getRidesForFriend(friendId: Long): List<RideWithCount>
 
     data class RideWithCount(
         val id: Long,
         val appName: String,
         val totalFare: Double,
         val date: Long,
-        val participantCount: Long // need to calculate each person's share
+        val participantCount: Int // need to calculate each person's share
     )
 }

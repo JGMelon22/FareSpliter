@@ -84,15 +84,15 @@ class SummaryActivity : AppCompatActivity() {
 
     private fun observeSummary() {
         viewModel.owedAmounts.observe(this) { amountMap ->
-            val items = amountMap.map { (friend, amount) ->
+            val items = amountMap.map { (friend, pair) ->
                 SummaryItem(
                     friend = friend,
-                    amountOwed = amount,
-                    rideCound = 0 // TODO - Will be configured latter
+                    amountOwed = pair.first,
+                    rideCound = pair.second
                 )
             }.sortedByDescending { it.amountOwed }
 
-            val total = amountMap.values.sum()
+            val total = amountMap.values.sumOf { it.first }
 
             currentItems = items
             currentTotal = total

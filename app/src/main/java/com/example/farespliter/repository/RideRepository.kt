@@ -49,14 +49,14 @@ class RideRepository(private val db: AppDatabase) {
         db.rideParticipantDao().getRidesForFriend(friendId)
 
     // Summary
-    suspend fun calculateOwedAmounts(): Map<Friend, Double> {
-        val friends = db.friendDao().getAllFriends().value ?: return emptyMap()
-        val result = mutableMapOf<Friend, Double>()
+    suspend fun calculateOwedAmounts(): Map<Friend, Pair<Double, Int>> {
+        val friends = db.friendDao().getAllFriendsOnce()
+        val result = mutableMapOf<Friend, Pair<Double, Int>>()
 
         friends.forEach { friend ->
             val rides = db.rideParticipantDao().getRidesForFriend(friend.id)
             val total = rides.sumOf { it.totalFare / it.participantCount }
-            result[friend] = total
+            result[friend] = Pair(total, rides.size)
         }
 
         return result

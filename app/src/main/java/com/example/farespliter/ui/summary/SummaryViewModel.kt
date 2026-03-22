@@ -15,13 +15,12 @@ class SummaryViewModel(application: Application) : AndroidViewModel(application)
     private val repository: RideRepository =
         RideRepository(AppDatabase.getInstance(application))
 
-    private val _owedAmounts = MutableLiveData<Map<Friend, Double>>()
-    val owedAmounts: LiveData<Map<Friend, Double>> = _owedAmounts
+    private val _owedAmounts = MutableLiveData<Map<Friend, Pair<Double, Int>>>()
+    val owedAmounts: LiveData<Map<Friend, Pair<Double, Int>>> = _owedAmounts
 
     fun loadSummary() {
         viewModelScope.launch {
-            val amounts = repository.calculateOwedAmounts()
-            _owedAmounts.value = amounts
+            _owedAmounts.value = repository.calculateOwedAmounts()
         }
     }
 }
