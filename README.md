@@ -9,9 +9,9 @@ Built as a personal learning project in Kotlin — my mom needed a way to keep t
 ## Screenshots
 
 <!-- Add screenshots here -->
-| Home | Add Ride | Summary |
-|---|---|---|
-| ![Home](screenshots/home.png) | ![Add Ride](screenshots/add_ride.png) | ![Summary](screenshots/summary.png) |
+| Home | Add Friend | Add Ride | Summary |
+|---|---|---|---|
+| <img width="300" alt="Home" src="https://github.com/user-attachments/assets/607b8e79-c781-4260-89cf-09b73896d39d" /> | <img width="300" alt="Add Friend" src="https://github.com/user-attachments/assets/153d46f5-2d35-4d82-93ad-54ff0d3a9f9d" /> | <img width="300" alt="Add Ride" src="https://github.com/user-attachments/assets/376b8be6-02c0-4aff-8ac2-df7a66e55f06" /> | <img width="300" alt="Summary" src="https://github.com/user-attachments/assets/2517756d-406d-4377-bea9-23ef0f98cb6f" /> |
 
 ---
 
@@ -54,11 +54,9 @@ The monthly summary adds up every share per friend across all rides in the month
 
 ## Running
 
-1. Clone and open in Android Studio (Hedgehog+)
+1. Clone and open in Android Studio 2025.2 (Panda+)
 2. Gradle sync
 3. Run on API 29+ device or emulator
-
-No API keys needed — fully local.
 
 ---
 
