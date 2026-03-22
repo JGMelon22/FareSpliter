@@ -5,13 +5,15 @@
     <item
         android:id="@+id/action_friends"
         android:title="@string/menu_friends"
-        android:icon="@android:drawable/ic_menu_manage"
+        android:icon="@drawable/ic_group"
+        android:iconTint="@android:color/white"
         app:showAsAction="ifRoom" />
 
     <item
         android:id="@+id/action_summary"
         android:title="@string/menu_summary"
-        android:icon="@android:drawable/ic_menu_info_details"
+        android:icon="@drawable/ic_bar_chart"
+        android:iconTint="@android:color/white"
         app:showAsAction="ifRoom" />
 
 </menu>
