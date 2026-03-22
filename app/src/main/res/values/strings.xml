@@ -6,6 +6,12 @@
     <string name="title_friends">Friends</string>
     <string name="fab_add_ride">Add ride</string>
     <string name="hint_app_name">App name (Uber, 99 Taxi…)</string>
+
+    <string-array name="ride_apps">
+        <item>Uber</item>
+        <item>99 Taxi</item>
+    </string-array>
+
     <string name="hint_fare">Total fare</string>
     <string name="hint_date">Date</string>
     <string name="label_participants">Participants</string>

@@ -3,6 +3,8 @@ package com.example.farespliter.ui.rides
 
 import android.app.DatePickerDialog
 import android.os.Bundle
+import android.widget.ArrayAdapter
+import android.widget.AutoCompleteTextView
 import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.ViewModelProvider
@@ -35,6 +37,7 @@ class AddRideActivity : AppCompatActivity() {
         friendsViewModel = ViewModelProvider(this)[FriendsViewModel::class.java]
 
         setupToolbar()
+        setupAppNameDropDown()
         setupDatePicker()
         setupParticipantsList()
         setupSaveButton()
@@ -46,6 +49,14 @@ class AddRideActivity : AppCompatActivity() {
         setSupportActionBar(toolbar)
         supportActionBar?.setDisplayHomeAsUpEnabled(true)
         supportActionBar?.title = getString(R.string.title_add_ride)
+    }
+
+    private fun setupAppNameDropDown() {
+        val apps = resources.getStringArray(R.array.ride_apps)
+        val adapter = ArrayAdapter(this, android.R.layout.simple_dropdown_item_1line, apps)
+        val etAppName = findViewById<AutoCompleteTextView>(R.id.etAppName)
+        etAppName.setAdapter(adapter)
+        etAppName.setText(apps[0], false) // Uber pre-selected by default
     }
 
     private fun setupDatePicker() {
@@ -65,7 +76,7 @@ class AddRideActivity : AppCompatActivity() {
                     etDate.setText(dateFormatter.format(selectedDateMs))
                 },
                 calendar.get(Calendar.YEAR),
-                calendar.get(Calendar.MONDAY),
+                calendar.get(Calendar.MONTH),
                 calendar.get(Calendar.DAY_OF_MONTH)
             ).show()
         }
@@ -112,7 +123,7 @@ class AddRideActivity : AppCompatActivity() {
     private fun validateAndSave(): Boolean {
         val tilAppName = findViewById<TextInputLayout>(R.id.tilAppName)
         val tilFare = findViewById<TextInputLayout>(R.id.tilFare)
-        val appName = findViewById<TextInputEditText>(R.id.etAppName)
+        val appName = findViewById<AutoCompleteTextView>(R.id.etAppName)
             .text?.toString() ?: ""
         val fareText = findViewById<TextInputEditText>(R.id.etFare)
             .text?.toString() ?: ""
