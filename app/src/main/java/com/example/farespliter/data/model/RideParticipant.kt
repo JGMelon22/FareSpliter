@@ -15,7 +15,7 @@ import androidx.room.Index
             onDelete = ForeignKey.CASCADE
         ),
         ForeignKey(
-            entity = Ride::class,
+            entity = Friend::class,
             parentColumns = ["id"],
             childColumns = ["friendId"],
             onDelete = ForeignKey.CASCADE

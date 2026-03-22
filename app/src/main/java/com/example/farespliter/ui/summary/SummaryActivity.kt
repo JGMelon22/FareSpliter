@@ -52,7 +52,7 @@ class SummaryActivity : AppCompatActivity() {
     private fun setupExportButton() {
         val btnExport = findViewById<MaterialButton>(R.id.btnExport)
         btnExport.setOnClickListener {
-            //  showExportDialog()
+            showExportDialog()
         }
     }
 
@@ -76,9 +76,10 @@ class SummaryActivity : AppCompatActivity() {
                     getString(R.string.msg_file_saved)
                 else
                     getString((R.string.msg_file_error))
-                Toast.makeText(this, msg, Toast.LENGTH_SHORT)
-                    .show()
+                Toast.makeText(this, msg, Toast.LENGTH_SHORT).show()
             }
+            .setNegativeButton(getString(R.string.btn_cancel), null)
+            .show()
     }
 
     private fun observeSummary() {

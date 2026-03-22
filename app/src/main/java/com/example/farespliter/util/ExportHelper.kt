@@ -24,7 +24,7 @@ object ExportHelper {
         sb.appendLine("  Generated: ${formatter.format(Date())}")
         sb.appendLine("================================")
         sb.appendLine()
-        sb.appendLine("Total spent: R$ %.2".format(totalSpent))
+        sb.appendLine("Total spent: R$ %.2f".format(totalSpent))
         sb.appendLine()
         sb.appendLine("Amount owed to you:")
         sb.appendLine("================================")
