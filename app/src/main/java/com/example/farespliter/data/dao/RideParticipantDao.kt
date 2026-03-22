@@ -13,9 +13,6 @@ interface RideParticipantDao {
     @Insert(onConflict = OnConflictStrategy.IGNORE)
     suspend fun insert(participant: RideParticipant)
 
-    @Query("DELETE FROM ride_participants WHERE rideId = :rideId")
-    suspend fun deleteByRide(rideId: Long)
-
     @Query(
         """
         SELECT friends.id, friends.name

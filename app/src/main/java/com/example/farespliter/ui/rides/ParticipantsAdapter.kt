@@ -11,7 +11,9 @@ import androidx.recyclerview.widget.RecyclerView
 import com.example.farespliter.R
 import com.example.farespliter.data.model.Friend
 
-class ParticipantsAdapter :
+class ParticipantsAdapter(
+    private val onSelectionChanged: () -> Unit
+) :
     ListAdapter<Friend, ParticipantsAdapter.ParticipantViewHolder>(DiffCallback) {
 
     private val checkedIds = mutableSetOf<Long>()
@@ -42,6 +44,7 @@ class ParticipantsAdapter :
             cb.setOnCheckedChangeListener { _, isChecked ->
                 if (isChecked) checkedIds.add(friend.id)
                 else checkedIds.remove(friend.id)
+                onSelectionChanged()
             }
         }
     }

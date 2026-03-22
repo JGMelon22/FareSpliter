@@ -7,6 +7,7 @@ import android.widget.ArrayAdapter
 import android.widget.AutoCompleteTextView
 import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
+import androidx.core.widget.doAfterTextChanged
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
@@ -39,6 +40,7 @@ class AddRideActivity : AppCompatActivity() {
         setupToolbar()
         setupAppNameDropDown()
         setupDatePicker()
+        setupFareWatcher()
         setupParticipantsList()
         setupSaveButton()
         observeFriends()
@@ -83,18 +85,11 @@ class AddRideActivity : AppCompatActivity() {
     }
 
     private fun setupParticipantsList() {
-        participantsAdapter = ParticipantsAdapter()
+        participantsAdapter = ParticipantsAdapter { updateEachPays() }
         val rv = findViewById<RecyclerView>(R.id.rvParticipants)
         rv.layoutManager = LinearLayoutManager(this)
         rv.adapter = participantsAdapter
         rv.isNestedScrollingEnabled = false
-
-        // Update per-person amount when checkbox change
-        participantsAdapter.registerAdapterDataObserver(
-            object : RecyclerView.AdapterDataObserver() {
-                override fun onChanged() = updateEachPays()
-            }
-        )
     }
 
     private fun updateEachPays() {
@@ -111,6 +106,11 @@ class AddRideActivity : AppCompatActivity() {
         } else {
             tvEachPays.text = "-"
         }
+    }
+
+    private fun setupFareWatcher() {
+        findViewById<TextInputEditText>(R.id.etFare)
+            .doAfterTextChanged { updateEachPays() }
     }
 
     private fun setupSaveButton() {
