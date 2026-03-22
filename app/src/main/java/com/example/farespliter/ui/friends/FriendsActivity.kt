@@ -39,10 +39,10 @@ class FriendsActivity : AppCompatActivity() {
     private fun setupRecyclerView() {
         adapter = FriendsAdapter { friend ->
             viewModel.deleteFriend(friend.id)
-            val rv = findViewById<RecyclerView>(R.id.rvFriends)
-            rv.layoutManager = LinearLayoutManager(this)
-            rv.adapter = adapter
         }
+        val rv = findViewById<RecyclerView>(R.id.rvFriends)
+        rv.layoutManager = LinearLayoutManager(this)
+        rv.adapter = adapter
     }
 
     private fun setupAddFriend() {
