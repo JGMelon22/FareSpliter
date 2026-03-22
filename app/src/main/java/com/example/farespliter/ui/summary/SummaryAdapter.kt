@@ -37,8 +37,8 @@ class SummaryAdapter :
                 .joinToString("") { it.first().uppercase() }
 
             tvName.text = item.friend.name
-            tvRideCount.text = itemView.context.getString(
-                R.string.label_ride_count, item.rideCound
+            tvRideCount.text = itemView.context.resources.getQuantityString(
+                R.plurals.ride_count, item.rideCound, item.rideCound
             )
             tvAmount.text = String.format(
                 Locale.getDefault(), "R$ %.2f", item.amountOwed

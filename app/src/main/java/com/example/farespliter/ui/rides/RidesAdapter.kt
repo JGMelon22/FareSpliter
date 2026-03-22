@@ -57,9 +57,13 @@ class RidesAdapter(
 
                 tvDate.text = String.format(
                     Locale.getDefault(),
-                    "%s . %d participants",
+                    "%s . %s",
                     SimpleDateFormat("dd/MM/yyyy", Locale.getDefault()).format(Date(ride.date)),
-                    friends.size
+                    itemView.context.resources.getQuantityString(
+                        R.plurals.participant_count,
+                        friends.size,
+                        friends.size
+                    )
                 )
             }
         }
