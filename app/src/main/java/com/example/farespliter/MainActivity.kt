@@ -17,6 +17,9 @@ import com.example.farespliter.ui.rides.RidesViewModel
 import com.example.farespliter.ui.summary.SummaryActivity
 import com.google.android.material.appbar.MaterialToolbar
 import com.google.android.material.floatingactionbutton.FloatingActionButton
+import java.text.SimpleDateFormat
+import java.util.Date
+import java.util.Locale
 
 class MainActivity : AppCompatActivity() {
 
@@ -30,6 +33,7 @@ class MainActivity : AppCompatActivity() {
         viewModel = ViewModelProvider(this)[RidesViewModel::class.java]
 
         setupToolbar()
+        setupMonthHeader()
         setupRecyclerView()
         setupFab()
         observeRides()
@@ -59,6 +63,13 @@ class MainActivity : AppCompatActivity() {
     private fun setupToolbar() {
         val toolbar = findViewById<MaterialToolbar>(R.id.toolbar)
         setSupportActionBar(toolbar)
+    }
+
+    private fun setupMonthHeader() {
+        val label = SimpleDateFormat("MMM yyy", Locale.getDefault())
+            .format(Date())
+            .uppercase()
+        findViewById<TextView>(R.id.tvMonthHeader).text = label
     }
 
     private fun setupRecyclerView() {
