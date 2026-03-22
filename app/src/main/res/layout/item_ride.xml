@@ -12,51 +12,66 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="vertical"
-        android:padding="12dp">
+        android:orientation="horizontal">
 
-        <!-- Top row: app name + fare -->
+        <!-- Colored left stripe -->
+        <View
+            android:layout_width="4dp"
+            android:layout_height="match_parent"
+            android:background="?attr/colorPrimary" />
+
+        <!-- All card content -->
         <LinearLayout
-            android:layout_width="match_parent"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            android:gravity="center_vertical">
+            android:layout_weight="1"
+            android:orientation="vertical"
+            android:padding="12dp">
 
-            <TextView
-                android:id="@+id/tvAppName"
-                android:layout_width="0dp"
+            <!-- Top row: app name + fare -->
+            <LinearLayout
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:textSize="16sp"
-                android:textStyle="bold"
-                android:textColor="?attr/colorOnSurface" />
+                android:orientation="horizontal"
+                android:gravity="center_vertical">
 
+                <TextView
+                    android:id="@+id/tvAppName"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:textSize="16sp"
+                    android:textStyle="bold"
+                    android:textColor="?attr/colorOnSurface" />
+
+                <TextView
+                    android:id="@+id/tvFare"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textSize="16sp"
+                    android:textStyle="bold"
+                    android:textColor="?attr/colorPrimary" />
+
+            </LinearLayout>
+
+            <!-- Date + participant count -->
             <TextView
-                android:id="@+id/tvFare"
+                android:id="@+id/tvDate"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:textSize="16sp"
-                android:textStyle="bold"
-                android:textColor="?attr/colorPrimary" />
+                android:layout_marginTop="2dp"
+                android:textSize="13sp"
+                android:textColor="?attr/colorOnSurfaceVariant" />
+
+            <!-- Participants chips -->
+            <com.google.android.material.chip.ChipGroup
+                android:id="@+id/chipGroupParticipants"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                app:singleLine="false" />
 
         </LinearLayout>
-
-        <!-- Date -->
-        <TextView
-            android:id="@+id/tvDate"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="2dp"
-            android:textSize="13sp"
-            android:textColor="?attr/colorOnSurfaceVariant" />
-
-        <!-- Participants chips -->
-        <com.google.android.material.chip.ChipGroup
-            android:id="@+id/chipGroupParticipants"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="8dp"
-            app:singleLine="false" />
 
     </LinearLayout>
 

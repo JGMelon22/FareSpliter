@@ -54,6 +54,13 @@ class RidesAdapter(
                     chip.isClickable = false
                     chipGroup.addView(chip)
                 }
+
+                tvDate.text = String.format(
+                    Locale.getDefault(),
+                    "%s . %d participants",
+                    SimpleDateFormat("dd/MM/yyyy", Locale.getDefault()).format(Date(ride.date)),
+                    friends.size
+                )
             }
         }
 
