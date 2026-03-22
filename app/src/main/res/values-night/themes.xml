@@ -4,4 +4,9 @@
         <!-- Customize your dark theme here. -->
         <!-- <item name="colorPrimary">@color/my_dark_primary</item> -->
     </style>
+
+    <style name="FareSpliter.Toolbar" parent="ThemeOverlay.MaterialComponents.Dark.ActionBar">
+        <item name="colorControlNormal">?attr/colorOnPrimary</item>
+        <item name="actionMenuTextColor">?attr/colorOnPrimary</item>
+    </style>
 </resources>

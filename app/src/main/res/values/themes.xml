@@ -6,4 +6,9 @@
     </style>
 
     <style name="Theme.FareSpliter" parent="Base.Theme.FareSpliter" />
+
+    <style name="FareSpliter.Toolbar" parent="ThemeOverlay.MaterialComponents.Dark.ActionBar">
+        <item name="colorControlNormal">?attr/colorOnPrimary</item>
+        <item name="actionMenuTextColor">?attr/colorOnPrimary</item>
+    </style>
 </resources>
