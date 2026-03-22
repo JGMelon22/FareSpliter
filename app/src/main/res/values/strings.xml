@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">FareSpliter</string>
+    <string name="app_name">FareSplitter</string>
     <string name="hint_friend_name">Friend name</string>
     <string name="btn_add">Add</string>
     <string name="btn_delete">Delete</string>
