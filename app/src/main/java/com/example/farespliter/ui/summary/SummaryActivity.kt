@@ -88,7 +88,7 @@ class SummaryActivity : AppCompatActivity() {
                 SummaryItem(
                     friend = friend,
                     amountOwed = pair.first,
-                    rideCound = pair.second
+                    rideCount = pair.second
                 )
             }.sortedByDescending { it.amountOwed }
 

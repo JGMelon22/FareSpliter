@@ -33,7 +33,7 @@ object ExportHelper {
             val line = "%-20s R$ %,.2f (%d rides)".format(
                 item.friend.name,
                 item.amountOwed,
-                item.rideCound
+                item.rideCount
             )
             sb.appendLine(line)
         }

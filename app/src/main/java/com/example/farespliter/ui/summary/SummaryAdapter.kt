@@ -33,12 +33,13 @@ class SummaryAdapter :
         fun bind(item: SummaryItem) {
             tvInitials.text = item.friend.name
                 .split(" ")
+                .filter { it.isNotBlank() }
                 .take(2)
                 .joinToString("") { it.first().uppercase() }
 
             tvName.text = item.friend.name
             tvRideCount.text = itemView.context.resources.getQuantityString(
-                R.plurals.ride_count, item.rideCound, item.rideCound
+                R.plurals.ride_count, item.rideCount, item.rideCount
             )
             tvAmount.text = String.format(
                 Locale.getDefault(), "R$ %.2f", item.amountOwed
@@ -58,5 +59,5 @@ class SummaryAdapter :
 data class SummaryItem(
     val friend: Friend,
     val amountOwed: Double,
-    val rideCound: Int
+    val rideCount: Int
 )
