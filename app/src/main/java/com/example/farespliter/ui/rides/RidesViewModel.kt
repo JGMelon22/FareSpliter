@@ -7,6 +7,7 @@ import androidx.lifecycle.viewModelScope
 import com.example.farespliter.data.AppDatabase
 import com.example.farespliter.data.model.Friend
 import com.example.farespliter.data.model.Ride
+import com.example.farespliter.data.model.RideParticipant
 import com.example.farespliter.repository.RideRepository
 import kotlinx.coroutines.launch
 
@@ -38,6 +39,22 @@ class RidesViewModel(application: Application) : AndroidViewModel(application) {
     fun deleteRide(rideId: Long) {
         viewModelScope.launch {
             repository.deleteRide(rideId)
+        }
+    }
+
+    fun getRideById(rideId: Long, callback: (Ride?) -> Unit) {
+        viewModelScope.launch {
+            callback(repository.getRideById(rideId))
+        }
+    }
+
+    fun updateRide(
+        ride: Ride,
+        participantIds: List<Long>
+    ) {
+        if (ride.appName.isBlank() || ride.totalFare <= 0 || participantIds.isEmpty()) return
+        viewModelScope.launch {
+            repository.updateRide(ride, participantIds)
         }
     }
 

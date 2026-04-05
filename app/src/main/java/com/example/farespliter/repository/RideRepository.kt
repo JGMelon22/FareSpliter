@@ -32,6 +32,9 @@ class RideRepository(private val db: AppDatabase) {
     fun getRidesByMonth(startMs: Long, endMs: Long): LiveData<List<Ride>> =
         db.rideDao().getRidesByMonth(startMs, endMs)
 
+    suspend fun getRideById(rideId: Long): Ride? =
+        db.rideDao().getRideById(rideId)
+
     suspend fun addRide(ride: Ride, participantIds: List<Long>) {
         val rideId = db.rideDao().insert(ride)
         participantIds.forEach { friendId ->
@@ -43,6 +46,18 @@ class RideRepository(private val db: AppDatabase) {
 
     suspend fun deleteRide(rideId: Long) {
         db.rideDao().deleteById(rideId)
+    }
+
+    suspend fun updateRide(ride: Ride, participantIds: List<Long>) {
+        db.rideDao().update(ride)
+
+        db.rideParticipantDao().deleteByRideId(ride.id)
+
+        participantIds.forEach { friendId ->
+            db.rideParticipantDao().insert(
+                RideParticipant(rideId = ride.id, friendId = friendId)
+            )
+        }
     }
 
     // Participants

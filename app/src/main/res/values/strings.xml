@@ -44,4 +44,6 @@
     <string name="menu_friends">Amigos</string>
     <string name="menu_summary">Resumo</string>
     <string name="empty_rides">Nenhuma corrida ainda.\nToque em + para adicionar!</string>
+    <string name="title_edit_ride">Editar corrida</string>
+    <string name="btn_update_ride">Salvar alterações</string>
 </resources>

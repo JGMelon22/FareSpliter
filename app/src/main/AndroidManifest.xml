@@ -27,6 +27,11 @@
             android:parentActivityName="MainActivity" />
 
         <activity
+            android:name=".ui.rides.EditRideActivity"
+            android:exported="false"
+            android:parentActivityName="MainActivity" />
+
+        <activity
             android:name=".ui.friends.FriendsActivity"
             android:exported="false"
             android:parentActivityName="MainActivity" />

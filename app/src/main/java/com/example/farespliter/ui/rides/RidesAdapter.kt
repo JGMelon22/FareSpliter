@@ -10,6 +10,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.example.farespliter.R
 import com.example.farespliter.data.model.Friend
 import com.example.farespliter.data.model.Ride
+import com.google.android.material.button.MaterialButton
 import com.google.android.material.chip.Chip
 import com.google.android.material.chip.ChipGroup
 import java.text.SimpleDateFormat
@@ -17,6 +18,8 @@ import java.util.Date
 import java.util.Locale
 
 class RidesAdapter(
+    private val onEditClick: (Ride) -> Unit,
+    private val onDeleteClick: (Ride) -> Unit,
     private val onParticipantsNeeded: (rideId: Long, callBack: (List<Friend>) -> Unit) -> Unit
 ) : ListAdapter<Ride, RidesAdapter.RideViewHolder>(DiffCallback) {
 
@@ -35,6 +38,7 @@ class RidesAdapter(
         private val tvFare = itemView.findViewById<TextView>(R.id.tvFare)
         private val tvDate = itemView.findViewById<TextView>(R.id.tvDate)
         private val chipGroup = itemView.findViewById<ChipGroup>(R.id.chipGroupParticipants)
+        private val btnDelete = itemView.findViewById<MaterialButton>(R.id.btnDeleteRide)
 
         fun bind(ride: Ride) {
             tvAppName.text = ride.appName
@@ -66,6 +70,9 @@ class RidesAdapter(
                     )
                 )
             }
+
+            itemView.setOnClickListener { onEditClick(ride) }
+            btnDelete.setOnClickListener { onDeleteClick(ride) }
         }
 
     }

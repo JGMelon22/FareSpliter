@@ -20,6 +20,13 @@ class ParticipantsAdapter(
 
     fun getSelectedIds(): List<Long> = checkedIds.toList()
 
+    // Pré-seleciona os participantes atuais da corrida
+    fun preSelectIds(ids: List<Long>) {
+        checkedIds.clear()
+        checkedIds.addAll(ids)
+        notifyDataSetChanged()
+    }
+
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ParticipantViewHolder {
         val view = LayoutInflater.from(parent.context)
             .inflate(R.layout.item_participant_checkbox, parent, false)

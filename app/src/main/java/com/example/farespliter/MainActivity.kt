@@ -12,6 +12,7 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.farespliter.ui.friends.FriendsActivity
 import com.example.farespliter.ui.rides.AddRideActivity
+import com.example.farespliter.ui.rides.EditRideActivity
 import com.example.farespliter.ui.rides.RidesAdapter
 import com.example.farespliter.ui.rides.RidesViewModel
 import com.example.farespliter.ui.summary.SummaryActivity
@@ -73,9 +74,18 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun setupRecyclerView() {
-        adapter = RidesAdapter { rideId, callBack ->
-            viewModel.getParticipantsForRide(rideId, callBack)
-        }
+        adapter = RidesAdapter(
+            onEditClick = { ride ->
+                val intent = Intent(this, EditRideActivity::class.java)
+                intent.putExtra(EditRideActivity.EXTRA_RIDE_ID, ride.id)
+                startActivity(intent)
+            },
+            onDeleteClick = { ride ->
+                viewModel.deleteRide(ride.id)
+            },
+            onParticipantsNeeded = { rideId, callBack ->
+                viewModel.getParticipantsForRide(rideId, callBack)
+            })
         val rv = findViewById<RecyclerView>(R.id.rvRides)
         rv.layoutManager = LinearLayoutManager(this)
         rv.adapter = adapter
