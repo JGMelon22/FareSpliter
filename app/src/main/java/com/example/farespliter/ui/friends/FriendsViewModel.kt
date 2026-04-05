@@ -28,4 +28,10 @@ class FriendsViewModel(application: Application) : AndroidViewModel(application)
             repository.deleteFriend(friendId)
         }
     }
+
+    fun updateFriend(friend: Friend) {
+        viewModelScope.launch {
+            repository.updateFriend(friend)
+        }
+    }
 }

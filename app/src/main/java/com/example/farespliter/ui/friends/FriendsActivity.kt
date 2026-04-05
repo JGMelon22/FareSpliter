@@ -1,5 +1,6 @@
 package com.example.farespliter.ui.friends
 
+import android.app.AlertDialog
 import android.os.Bundle
 import android.view.inputmethod.EditorInfo
 import com.example.farespliter.R
@@ -37,12 +38,36 @@ class FriendsActivity : AppCompatActivity() {
     }
 
     private fun setupRecyclerView() {
-        adapter = FriendsAdapter { friend ->
-            viewModel.deleteFriend(friend.id)
-        }
+        adapter = FriendsAdapter(
+            onEditClick = { friend ->
+                showEditDialog(friend)
+            },
+            onDeleteClick = { friend ->
+                viewModel.deleteFriend(friend.id)
+            }
+        )
         val rv = findViewById<RecyclerView>(R.id.rvFriends)
         rv.layoutManager = LinearLayoutManager(this)
         rv.adapter = adapter
+    }
+
+    private fun showEditDialog(friend: Friend) {
+        val input = TextInputEditText(this)
+        input.setText(friend.name)
+        input.selectAll()
+
+        AlertDialog.Builder(this)
+            .setTitle(getString(R.string.title_edit_friend))
+            .setView(input)
+            .setPositiveButton(getString(R.string.btn_save)) { _, _ ->
+                val newName = input.text?.toString() ?: return@setPositiveButton
+                if (newName.isBlank()) return@setPositiveButton
+
+                // .copy() cria um novo Friend com o mesmo id, mas nome atualizado
+                viewModel.updateFriend(friend.copy(name = newName.trim()))
+            }
+            .setNegativeButton(getString(R.string.btn_cancel), null)
+            .show()
     }
 
     private fun setupAddFriend() {

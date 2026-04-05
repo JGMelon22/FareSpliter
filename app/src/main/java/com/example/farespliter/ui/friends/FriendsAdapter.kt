@@ -4,6 +4,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
+import androidx.constraintlayout.motion.widget.MotionScene
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
@@ -11,6 +12,7 @@ import com.example.farespliter.R
 import com.example.farespliter.data.model.Friend
 
 class FriendsAdapter(
+    private val onEditClick: (Friend) -> Unit,
     private val onDeleteClick: (Friend) -> Unit
 ) : ListAdapter<Friend, FriendsAdapter.FriendViewHolder>(DiffCallback) {
 
@@ -33,8 +35,13 @@ class FriendsAdapter(
             tvName.text = friend.name
             tvInitials.text = friend.name
                 .split(" ")
+                .filter { it.isNotBlank() }
                 .take(2)
                 .joinToString("") { it.first().uppercase() } // Eg: "Ana Lima" -> "AL"
+
+            itemView.setOnClickListener {
+                onEditClick(friend)
+            }
 
             btnDelete.setOnClickListener {
                 onDeleteClick(friend)

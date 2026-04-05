@@ -21,6 +21,10 @@ class RideRepository(private val db: AppDatabase) {
         db.friendDao().deleteById(friendId)
     }
 
+    suspend fun updateFriend(friend: Friend) {
+        db.friendDao().update(friend)
+    }
+
     // Rides
     fun getAllRides(): LiveData<List<Ride>> =
         db.rideDao().getAllRides()
