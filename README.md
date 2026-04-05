@@ -64,4 +64,4 @@ The monthly summary adds up every share per friend across all rides in the month
 
 - [ ] Monthly filtering in Summary screen
 - [ ] Delete confirmation dialogs
-- [ ] Edit a ride after saving
+- [x] Edit a ride after saving
